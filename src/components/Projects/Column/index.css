@@ -1,0 +1,35 @@
+.column {
+    background: #F5F9F9;
+    border-radius: 15px;
+    width: 20rem;
+    height: 80vh;
+    margin: 20px 30px;
+    padding: 30px;
+}
+
+.column-title {
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.column-title > .task-length {
+    background: #ECF3F3;
+    border-radius: 7px;
+    padding: 2px 8px;
+    color: #329C89;
+
+}
+
+.column > .add-button {
+    width: 100%;
+    height: 40px;
+    background: #ECF3F3;
+    border: 1px solid #ECF3F3;
+    border-radius: 7px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #329C89;
+    margin: 20px 0;
+}

@@ -1,6 +1,7 @@
 // Components
 import Sidebar from "../../components/Sidebar";
 import Header from "../../components/Header";
+import DragNDrop from "../../components/Projects/DragNDrop";
 
 // CSS
 import "./index.css";
@@ -16,6 +17,10 @@ const Projects = () => {
         <Header />
         <div className="projects-container">
           <h2>Projects</h2>
+
+          <div className="projects-board">
+            <DragNDrop />
+          </div>
         </div>
       </div>
     </div>

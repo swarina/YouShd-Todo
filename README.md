@@ -23,9 +23,9 @@ Open [http://localhost:3000](http://localhost:3000) on your browser to see the w
 ## Tech Stack:
 
 - **Frontend:** React
-    - **Hosted:** Vercel: <a href="https://you-shd-todo.vercel.app/">Link</a>
+    - **Hosted:**  Vercel: <a href="https://you-shd-todo.vercel.app/">Link</a>
 - **Backend:** Django
-    - **Hosted** Heroku: <a href="https://youshd-todo-backend.herokuapp.com/">Link</a>
+    - **Hosted:**  Heroku: <a href="https://youshd-todo-backend.herokuapp.com/">Link</a>
 
 ## Features
 
@@ -33,7 +33,7 @@ Open [http://localhost:3000](http://localhost:3000) on your browser to see the w
 - Draggable columns to reorder.
 - Add new task functionality.
 - Edit task functionality.
-- Saves and retrieves data from data to Local Storage.
+- Saves and retrieves data from  Local Storage.
 
 ## Screenshots
 

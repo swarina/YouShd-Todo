@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // CSS
 import "./index.css";
 
 // Components
 import Column from "../Column";
+import EditTask from "../Edit";
 
 // Drag and Drop
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
@@ -13,8 +14,19 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import projectData from "../../../data";
 
 const DragNDrop = () => {
-  const [data, setData] = useState(projectData);
+  const [data, setData] = useState(() => {
+    const newData = localStorage.getItem("project-data");
+    return newData !== null ? JSON.parse(newData) : projectData;
+  });
+  const [task, setTask] = useState();
+  const [editSection, setEditSection] = useState(false);
 
+  // Save to local storage
+  useEffect(() => {
+    localStorage.setItem("project-data", JSON.stringify(data));
+  }, [data]);
+
+  // On Drag
   const onDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
 
@@ -113,8 +125,17 @@ const DragNDrop = () => {
     setData(newData);
   };
 
+  // Edit Task
+  // const handleEditTask = (task) => {
+  //   console.log(task);
+  //   setTask(task);
+  //   setEditSection(!editSection);
+  // };
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
+      {editSection && <EditTask task={task} />}
+
       <Droppable droppableId="all-columns" direction="horizontal" type="column">
         {(provided) => (
           <div
@@ -133,6 +154,7 @@ const DragNDrop = () => {
                   tasks={tasks}
                   index={index}
                   addNewTask={handleNewTask}
+                  // editTask={handleEditTask}
                 />
               );
             })}

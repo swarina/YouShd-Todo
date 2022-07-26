@@ -16,7 +16,7 @@ const Header = () => {
         </span>
         <input type="text" name="search" placeholder="Search" />
       </div>
-      <div className="header-participants">Hello</div>
+      {/* <div className="header-participants">Hello</div> */}
       <div className="header-info">
         <p>Hi Saundarya</p>
         <img src={Image} alt="profile" />

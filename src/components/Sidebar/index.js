@@ -5,7 +5,32 @@ import "./index.css";
 import { FaHome, FaChartBar, FaFolder, FaCalendarAlt } from "react-icons/fa";
 import { RiChat3Fill, RiSettings4Fill, RiLogoutBoxRLine } from "react-icons/ri";
 
-const Sidebar = () => {
+// Axios
+import axios from "../../api/axios";
+
+const Sidebar = (props) => {
+  // const handleClick = () => {
+  //   const token = localStorage.getItem("auth-token");
+
+  //   axios
+  //     .post(
+  //       "logout",
+  //       {},
+  //       {
+  //         headers: {
+  //           Authorization: "Token " + token,
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       // console.log(response.data.token);
+  //       localStorage.removeItem("auth-token");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+
   return (
     <div className="sidebar">
       <h2>.taskez</h2>

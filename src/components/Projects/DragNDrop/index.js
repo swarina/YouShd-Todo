@@ -95,6 +95,24 @@ const DragNDrop = () => {
     setData(newState);
   };
 
+  // Add new Task to respective column
+  const handleNewTask = (newTask) => {
+    const { title, description, columnId } = newTask;
+    const totalTasks = Object.keys(data.tasks).length;
+    const taskId = `task-${totalTasks + 1}`;
+
+    let newData = { ...data };
+
+    newData.tasks[taskId] = {
+      id: taskId,
+      title: title,
+      content: description,
+    };
+
+    newData.columns[columnId].taskIds.push(taskId);
+    setData(newData);
+  };
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="all-columns" direction="horizontal" type="column">
@@ -114,6 +132,7 @@ const DragNDrop = () => {
                   column={column}
                   tasks={tasks}
                   index={index}
+                  addNewTask={handleNewTask}
                 />
               );
             })}

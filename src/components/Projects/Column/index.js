@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 // CSS
 import "./index.css";
 
@@ -8,6 +10,25 @@ import Task from "../Task";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 
 const Column = (props) => {
+  const [showTaskCard, setShowTaskCard] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+  // Show / Hide new Task card
+  const handleClick = () => {
+    setShowTaskCard(!showTaskCard);
+  };
+
+  // Add new Task Card
+  const handleSubmit = () => {
+    const columnId = props.column.id;
+    props.addNewTask({ title, description, columnId });
+  };
+
+  useEffect(() => {
+    setShowTaskCard(false);
+  }, [props]);
+
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
       {(provided) => (
@@ -21,9 +42,34 @@ const Column = (props) => {
             <span className="task-length">{props.tasks.length}</span>
           </div>
 
-          <button type="submit" name="add-task" className="add-button">
+          {/* Add New Task Button */}
+          <button
+            type="submit"
+            name="add-task"
+            className="add-button"
+            onClick={() => handleClick()}
+          >
             +
           </button>
+
+          {/* New Task Card */}
+          {showTaskCard && (
+            <div className="new-task-card">
+              <input
+                type="text"
+                placeholder="Give your task a title"
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Description..."
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              <button type="submit" onClick={() => handleSubmit()}>
+                Done
+              </button>
+            </div>
+          )}
 
           <Droppable droppableId={props.column.id} type="task">
             {(provided, snapshot) => (

@@ -126,15 +126,22 @@ const DragNDrop = () => {
   };
 
   // Edit Task
-  // const handleEditTask = (task) => {
-  //   console.log(task);
-  //   setTask(task);
-  //   setEditSection(!editSection);
-  // };
+  const handleEditTask = (task) => {
+    setTask(task);
+    setEditSection(!editSection);
+  };
+
+  const updateTask = (newTask) => {
+    let newData = { ...data };
+
+    newData.tasks[newTask.id] = newTask;
+    setData(newData);
+    setEditSection(!editSection);
+  };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      {editSection && <EditTask task={task} />}
+      {editSection && <EditTask task={task} updateTask={updateTask} />}
 
       <Droppable droppableId="all-columns" direction="horizontal" type="column">
         {(provided) => (
@@ -154,7 +161,7 @@ const DragNDrop = () => {
                   tasks={tasks}
                   index={index}
                   addNewTask={handleNewTask}
-                  // editTask={handleEditTask}
+                  editTask={handleEditTask}
                 />
               );
             })}

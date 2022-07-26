@@ -25,6 +25,11 @@ const Column = (props) => {
     props.addNewTask({ title, description, columnId });
   };
 
+  // Edit task
+  const handleEditTask = (task) => {
+    props.editTask(task);
+  };
+
   useEffect(() => {
     setShowTaskCard(false);
   }, [props]);
@@ -79,7 +84,9 @@ const Column = (props) => {
                 isDraggingOver={snapshot.isDraggingOver}
               >
                 {props.tasks.map((task, index) => (
-                  <Task key={task.id} task={task} index={index} />
+                  <div key={task.id} onClick={() => handleEditTask(task)}>
+                    <Task task={task} index={index} />
+                  </div>
                 ))}
                 {provided.placeholder}
               </div>
